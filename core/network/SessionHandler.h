@@ -6,13 +6,13 @@
 #include <vector>
 #include "../../protocol/packet_protocol.h"
 
-class async_acceptor;
+class AsyncAcceptor;
 
-class session_handler {
+class SessionHandler {
 public:
-    session_handler(boost::asio::io_service &io_service, async_acceptor *acceptor);
+    SessionHandler(boost::asio::io_service &io_service, AsyncAcceptor *acceptor);
 
-    ~session_handler();
+    ~SessionHandler();
 
     inline boost::asio::ip::tcp::socket &socket() { return m_socket; }
 
@@ -42,7 +42,7 @@ protected:
 
 private:
     boost::asio::ip::tcp::socket m_socket;
-    async_acceptor *m_acceptor;
+    AsyncAcceptor *m_acceptor;
 
     int m_header_size;
     FIELD m_packet_header[FIELD_BMARK + 3];

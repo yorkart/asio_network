@@ -1,7 +1,7 @@
 #define LOG4Z_FORMAT_INPUT_ENABLE
 
 #include "libs/log4z.h"
-#include "core/network/network_server.h"
+#include "core/network/NetworkServer.h"
 #include <boost/thread.hpp>
 #include <boost/functional.hpp>
 #include <boost/bind.hpp>
@@ -11,9 +11,9 @@ int main(int argc, char *argv[]) {
 
     int server_port = 7654;
     int connet_num = 100;
-    network_server srv(server_port, connet_num);
+    NetworkServer srv(server_port, connet_num);
 
-    boost::function<void()> fun = boost::bind(&network_server::run, &srv);
+    boost::function<void()> fun = boost::bind(&NetworkServer::run, &srv);
     boost::thread t(fun);
 
     while (true) {

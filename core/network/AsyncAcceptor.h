@@ -10,27 +10,27 @@
 
 //#define ACCEPT_CONNECT_CLIENT_COUNT  100
 
-class session_handler;
+class SessionHandler;
 
-class async_acceptor {
+class AsyncAcceptor {
 public:
-    async_acceptor(boost::asio::io_service &io_service, short port);
+    AsyncAcceptor(boost::asio::io_service &io_service, short port);
 
-    virtual ~async_acceptor();
+    virtual ~AsyncAcceptor();
 
     void start();
 
-    void handle_accept(session_handler *handler, const boost::system::error_code &error);
+    void handle_accept(SessionHandler *handler, const boost::system::error_code &error);
 
-    session_handler *make_session_handler();
+    SessionHandler *make_session_handler();
 
-    void remove_session_handler(session_handler *handler);
+    void remove_session_handler(SessionHandler *handler);
 
 private:
     boost::asio::io_service &m_io_service;
     boost::asio::ip::tcp::acceptor m_acceptor;
 
-    typedef std::set<session_handler *> SESSION_LIST;
+    typedef std::set<SessionHandler *> SESSION_LIST;
     boost::mutex m_mtx_handlers;
     SESSION_LIST m_set_handlers;
 };

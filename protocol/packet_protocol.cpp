@@ -7,7 +7,7 @@ static uint32_t crc32(const void *data, size_t size) {
     return crc32_obj();
 }
 
-int serialize_packet(output_stream &out, FIELD *fields, int len) {
+int serialize_packet(OutputStream &out, FIELD *fields, int len) {
     char *body_base = 0;
     int n = 0;
 
@@ -140,7 +140,7 @@ int serialize_packet(output_stream &out, FIELD *fields, int len) {
 }
 
 
-int unserialize_header_packet(input_stream &in, FIELD *fields, bool compare_crc) {
+int unserialize_header_packet(InputStream &in, FIELD *fields, bool compare_crc) {
     Char c_val = 0;
     Short s_val = 0;
     Long l_val = 0;
@@ -207,7 +207,7 @@ int unserialize_header_packet(input_stream &in, FIELD *fields, bool compare_crc)
     return ERR_OK;
 }
 
-int unserialize_body_packet(input_stream &in, FIELD *fields, int len, bool compare_crc) {
+int unserialize_body_packet(InputStream &in, FIELD *fields, int len, bool compare_crc) {
     Char c_val = 0;
     Short s_val = 0;
     Long l_val = 0;

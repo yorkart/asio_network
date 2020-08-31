@@ -2,8 +2,8 @@
 #define _PACKET_PROTOCOL_HEADER_H_
 
 #include "../include/error_code.h"
-#include "../common/input_stream.h"
-#include "../common/output_stream.h"
+#include "../common/InputStream.h"
+#include "../common/OutputStream.h"
 
 #define  HEAD_MARK    0x11111111
 #define  BODY_MARK    0x22222222
@@ -95,11 +95,11 @@ FIELD obj[]=\
 }
 
 
-int serialize_packet(output_stream &out, FIELD *fields, int len);
+int serialize_packet(OutputStream &out, FIELD *fields, int len);
 
-int unserialize_header_packet(input_stream &in, FIELD *fields, bool compare_crc = true);
+int unserialize_header_packet(InputStream &in, FIELD *fields, bool compare_crc = true);
 
-int unserialize_body_packet(input_stream &in, FIELD *fields, int len, bool compare_crc = true);
+int unserialize_body_packet(InputStream &in, FIELD *fields, int len, bool compare_crc = true);
 
 int copy_fields(FIELD *dest, FIELD *src, bool only_header = false);
 

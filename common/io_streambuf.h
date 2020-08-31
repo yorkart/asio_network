@@ -5,9 +5,9 @@
 #include <stdio.h>
 #include <assert.h>
 
-class istreambuf : public std::streambuf {
+class IStreambuf : public std::streambuf {
 public:
-    istreambuf(char *base, const size_t len) : std::streambuf() {
+    IStreambuf(char *base, const size_t len) : std::streambuf() {
         this->setbuf(base, len);
         this->setg(base, base, base + len);//todo: here is setg(set get position)
     }
@@ -28,9 +28,9 @@ public:
 };
 
 
-class ostreambuf : public std::streambuf {
+class OStreambuf : public std::streambuf {
 public:
-    ostreambuf(char *base, const size_t len) : std::streambuf() {
+    OStreambuf(char *base, const size_t len) : std::streambuf() {
         this->setbuf(base, len);
         this->setp(base, base + len);//todo: here is setp(set put position)
     }

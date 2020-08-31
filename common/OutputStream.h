@@ -5,27 +5,27 @@
 #include "net_stream.h"
 #include "io_streambuf.h"
 
-class output_stream : public std::ostream {
+class OutputStream : public std::ostream {
 private:
     bool m_is_little_order;
 
 public:
-    output_stream(ostreambuf *b);
+    OutputStream(OStreambuf *b);
 
-    virtual ~output_stream();
+    virtual ~OutputStream();
 
     char *base_ptr() const {
-        ostreambuf *buf = (dynamic_cast<ostreambuf *>(rdbuf()));
+        OStreambuf *buf = (dynamic_cast<OStreambuf *>(rdbuf()));
         return buf->base_ptr();
     }
 
     char *write_ptr() const {
-        ostreambuf *buf = (dynamic_cast<ostreambuf *>(rdbuf()));
+        OStreambuf *buf = (dynamic_cast<OStreambuf *>(rdbuf()));
         return buf->write_ptr();
     }
 
     char *end_ptr() const {
-        ostreambuf *buf = (dynamic_cast<ostreambuf *>(rdbuf()));
+        OStreambuf *buf = (dynamic_cast<OStreambuf *>(rdbuf()));
         return buf->end_ptr();
     }
 

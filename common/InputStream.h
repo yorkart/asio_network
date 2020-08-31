@@ -5,27 +5,27 @@
 #include "net_stream.h"
 #include "io_streambuf.h"
 
-class input_stream : public std::istream {
+class InputStream : public std::istream {
 private:
     bool m_is_little_order;
 
 public:
-    input_stream(istreambuf *b);
+    InputStream(IStreambuf *b);
 
-    virtual ~input_stream();
+    virtual ~InputStream();
 
     char *base_ptr() const {
-        istreambuf *buf = dynamic_cast<istreambuf *>(rdbuf());
+        IStreambuf *buf = dynamic_cast<IStreambuf *>(rdbuf());
         return buf->base_ptr();
     }
 
     char *read_ptr() const {
-        istreambuf *buf = dynamic_cast<istreambuf *>(rdbuf());
+        IStreambuf *buf = dynamic_cast<IStreambuf *>(rdbuf());
         return buf->read_ptr();
     }
 
     char *end_ptr() const {
-        istreambuf *buf = dynamic_cast<istreambuf *>(rdbuf());
+        IStreambuf *buf = dynamic_cast<IStreambuf *>(rdbuf());
         return buf->end_ptr();
     }
 

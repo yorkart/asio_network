@@ -1,7 +1,7 @@
 #include "rtdb_client_impl.h"
 #include "rtdb_client.h"
-#include "../common/input_stream.h"
-#include "../common/output_stream.h"
+#include "../common/InputStream.h"
+#include "../common/OutputStream.h"
 #include "../common/io_streambuf.h"
 #include "../protocol/packet_protocol.h"
 #include "../protocol/protocol_network.h"
@@ -78,8 +78,8 @@ int rtdb_client::rtdb_client_impl::send_packet(FIELD *fields, int len) {
     std::vector<char> send_buffer;
     send_buffer.resize(total);
 
-    ostreambuf b(&send_buffer[0], total);
-    output_stream wd(&b);
+    OStreambuf b(&send_buffer[0], total);
+    OutputStream wd(&b);
     int ret = serialize_packet(wd, fields, len);
     if (0 == ret) {
         boost::system::error_code ec;
@@ -120,8 +120,8 @@ int rtdb_client::rtdb_client_impl::recv_packet(FIELD *fields, int len) {
         return ERR_DECODE_ERROE;
     }
 
-    istreambuf b(&recv_header_buffer[0], header_size);
-    input_stream rd(&b);
+    IStreambuf b(&recv_header_buffer[0], header_size);
+    InputStream rd(&b);
 
     MSG_COMMON_REQ_FIELDS(MSG_COMMON, robj);
     int ret = unserialize_header_packet(rd, robj);
@@ -173,8 +173,8 @@ int rtdb_client::rtdb_client_impl::recv_packet(FIELD *fields, int len) {
             return ERR_DECODE_ERROE;
 
 
-        istreambuf b1(&recv_body_buffer[0], header_size);
-        input_stream rd1(&b1);
+        IStreambuf b1(&recv_body_buffer[0], header_size);
+        InputStream rd1(&b1);
         ret = unserialize_body_packet(rd1, fields, len);
     }
 

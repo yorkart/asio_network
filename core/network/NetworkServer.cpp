@@ -1,4 +1,4 @@
-#include "network_server.h"
+#include "NetworkServer.h"
 
 #define LOG4Z_FORMAT_INPUT_ENABLE
 
@@ -7,14 +7,14 @@
 
 using namespace zsummer::log4z;
 
-network_server::network_server(const int port, const int conn_num)
+NetworkServer::NetworkServer(const int port, const int conn_num)
         : m_net_acceptor(m_net_server, (short)port) {
 }
 
-network_server::~network_server() = default;
+NetworkServer::~NetworkServer() = default;
 
 
-void network_server::run() {
+void NetworkServer::run() {
     try {
         LOGFMT_INFO(LOG4Z_MAIN_LOGGER_ID, "Start module [network] now ...");
 
@@ -29,6 +29,6 @@ void network_server::run() {
     }
 }
 
-void network_server::stop() {
+void NetworkServer::stop() {
     m_net_server.stop();
 }
