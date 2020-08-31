@@ -16,7 +16,7 @@ void AsyncAcceptor::start() {
     boost::asio::ip::tcp::endpoint ep = m_acceptor.local_endpoint();
     LOGFMT_INFO(LOG4Z_MAIN_LOGGER_ID, "Server listen on %s:%d", ep.address().to_string().c_str(), ep.port());
 
-    SessionHandler *handler = make_session_handler();
+    SessionHandler *handler = this->make_session_handler();
     m_acceptor.async_accept(handler->socket(),
                             boost::bind(&AsyncAcceptor::handle_accept,
                                         this,
@@ -29,7 +29,7 @@ void AsyncAcceptor::handle_accept(SessionHandler *handler, const boost::system::
     if (!error) {
         handler->start();
 
-        handler = make_session_handler();
+        handler = this->make_session_handler();
         m_acceptor.async_accept(handler->socket(),
                                 boost::bind(&AsyncAcceptor::handle_accept,
                                             this,

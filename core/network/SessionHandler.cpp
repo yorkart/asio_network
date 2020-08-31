@@ -12,7 +12,7 @@
 
 SessionHandler::SessionHandler(boost::asio::io_service &io_service, AsyncAcceptor *acceptor)
         : m_socket(io_service), m_acceptor(acceptor), m_header_size(0) {
-    //caculate packet header bytes size
+    //calculate packet header bytes size
     MSG_COMMON_REQ_FIELDS(MSG_COMMON, obj);
     fields_size(obj, 0, &m_header_size, 0, 0);
 }

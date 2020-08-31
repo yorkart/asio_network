@@ -13,9 +13,6 @@ public:
 
     void stop();
 
-protected:
-    NetworkServer(const NetworkServer &);
-
 private:
     boost::asio::io_service m_net_server;
     AsyncAcceptor m_net_acceptor;

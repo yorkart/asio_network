@@ -34,7 +34,7 @@ enum MSG_FIELD_NUMBER {
     FIELD_METHOD,  //method id
     FIELD_BSIZE,   //body size
     FIELD_RETURN,  //return value
-    FIELD_TIME,    //time stamp
+    FIELD_TIME,    //timestamp
     FIELD_COUNT,   //count
     FIELD_HCRC,    //header crc
     FIELD_BMARK,   //body mark
