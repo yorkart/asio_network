@@ -38,6 +38,7 @@ add_executable(asio_network main.cpp
         libs/log4z.h
         protocol/packet_protocol.cpp
         protocol/packet_protocol.h
-        protocol/protocol_network.h)
+        protocol/protocol_network.h
+        showcase/SessionHandler.cpp showcase/SessionHandler.h showcase/NetworkServer.cpp showcase/NetworkServer.h showcase/async_main.cpp)
 
 target_link_libraries( asio_network ${Boost_LIBRARIES} )
