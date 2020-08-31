@@ -1,7 +1,7 @@
 #ifndef _LIBS_DAEMON_HEADER_H_
 #define _LIBS_DAEMON_HEADER_H_
 
-#include <stdlib.h>
+#include <cstdlib>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>

@@ -1,6 +1,7 @@
 #ifndef _NET_STREAM_HEADER_H_
 #define _NET_STREAM_HEADER_H_
-#include <stdint.h>
+
+#include <cstdint>
 
 typedef unsigned char Byte;
 typedef int8_t Char;
@@ -11,7 +12,7 @@ typedef int32_t Long;
 typedef uint32_t ULong;
 typedef int64_t LongLong;
 typedef uint64_t ULongLong;
-typedef float  Float;
+typedef float Float;
 typedef double Double;
 
 uint16_t swap_2(uint16_t v);

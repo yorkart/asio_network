@@ -1,12 +1,6 @@
 #include "async_acceptor.h"
-#include <cstdlib>
-#include <iostream>
-#include <boost/functional.hpp>
 #include <boost/typeof/typeof.hpp>
-#include <boost/lexical_cast.hpp>
-#include <boost/make_shared.hpp>
 #include "session_handler.h"
-#include "../../protocol/packet_protocol.h"
 
 #define LOG4Z_FORMAT_INPUT_ENABLE
 
@@ -27,11 +21,10 @@ void async_acceptor::start() {
 
     session_handler *handler = make_session_handler();
     m_acceptor.async_accept(handler->socket(),
-                            boost::bind(
-                                    &async_acceptor::handle_accept,
-                                    this,
-                                    handler,
-                                    boost::asio::placeholders::error));
+                            boost::bind(&async_acceptor::handle_accept,
+                                        this,
+                                        handler,
+                                        boost::asio::placeholders::error));
 
 }
 
@@ -41,11 +34,10 @@ void async_acceptor::handle_accept(session_handler *handler, const boost::system
 
         handler = make_session_handler();
         m_acceptor.async_accept(handler->socket(),
-                                boost::bind(
-                                        &async_acceptor::handle_accept,
-                                        this,
-                                        handler,
-                                        boost::asio::placeholders::error));
+                                boost::bind(&async_acceptor::handle_accept,
+                                            this,
+                                            handler,
+                                            boost::asio::placeholders::error));
     } else {
         remove_session_handler(handler);
         delete handler;

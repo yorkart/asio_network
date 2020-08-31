@@ -3,7 +3,7 @@
 
 #include <string>
 #include <boost/smart_ptr.hpp>
-#include <stdio.h>
+#include <cstdio>
 
 class IniConfig;
 

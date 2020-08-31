@@ -3,11 +3,10 @@
 #include "config.h"
 #include "daemon.h"
 #include "log4z.h"
-#include <stdio.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <signal.h>
+#include <cstdio>
+#include <cerrno>
+#include <cstdlib>
+#include <csignal>
 #include <boost/lexical_cast.hpp>
 
 volatile bool g_quit = false;

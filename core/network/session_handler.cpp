@@ -1,15 +1,9 @@
 #include "session_handler.h"
-#include "../../common/input_stream.h"
-#include "../../common/output_stream.h"
-#include "../../common/io_streambuf.h"
 #include "async_acceptor.h"
 #include <cstdlib>
-#include <iostream>
 #include <string>
-#include <assert.h>
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
-#include <boost/make_shared.hpp>
 
 #define LOG4Z_FORMAT_INPUT_ENABLE
 
