@@ -37,7 +37,6 @@
 #include "log4z.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
 #include <time.h>
 #include <string.h>
 #include <math.h>
@@ -46,7 +45,6 @@
 #include <map>
 #include <list>
 #include <algorithm>
-#include <iostream>
 
 
 #ifdef WIN32
@@ -60,17 +58,11 @@
 #else
 
 #include <unistd.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include<pthread.h>
 #include <sys/time.h>
 #include <sys/stat.h>
 #include <dirent.h>
 #include <fcntl.h>
-#include <semaphore.h>
-#include <sys/syscall.h>
 
 #endif
 

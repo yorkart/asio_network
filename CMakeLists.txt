@@ -34,11 +34,11 @@ add_executable(asio_network main.cpp
         core/network/session_handler.cpp
         core/network/session_handler.h
         include/error_code.h
-        libs/app.cpp
-        libs/app.h
-        libs/config.h
-        libs/daemon.h
-        libs/file.h
+#        libs/app.cpp
+#        libs/app.h
+#        libs/config.h
+#        libs/daemon.h
+#        libs/file.h
         libs/log4z.cpp
         libs/log4z.h
         protocol/packet_protocol.cpp

@@ -6,8 +6,6 @@
 #include <boost/functional.hpp>
 #include <boost/bind.hpp>
 
-extern volatile bool g_quit;
-
 int main(int argc, char *argv[]) {
     LOGFMT_INFO(LOG4Z_MAIN_LOGGER_ID, "Start server ...");
 
@@ -18,8 +16,8 @@ int main(int argc, char *argv[]) {
     boost::function<void()> fun = boost::bind(&network_server::run, &srv);
     boost::thread t(fun);
 
-    while (!g_quit) {
-        sleep(10);
+    while (true) {
+        sleep(100);
     }
 
     srv.stop();
