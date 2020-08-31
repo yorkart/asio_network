@@ -6,14 +6,12 @@
 
 #include "../../libs/log4z.h"
 
-///////////////////////////////////////////////////////////////////////
 async_acceptor::async_acceptor(boost::asio::io_service &io_service, short port)
         : m_io_service(io_service),
           m_acceptor(io_service, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port)) {
 }
 
-async_acceptor::~async_acceptor() {
-}
+async_acceptor::~async_acceptor() = default;
 
 void async_acceptor::start() {
     boost::asio::ip::tcp::endpoint ep = m_acceptor.local_endpoint();
@@ -53,7 +51,7 @@ session_handler *async_acceptor::make_session_handler() {
         return handler;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 void async_acceptor::remove_session_handler(session_handler *handler) {
