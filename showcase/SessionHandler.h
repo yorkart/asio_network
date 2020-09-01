@@ -20,6 +20,8 @@ namespace Showcase {
 
         void close();
 
+        virtual void on_message(const char* buffer, size_t length);
+
     private:
         void handle_read(const boost::system::error_code &error,
                          size_t bytes_transferred,

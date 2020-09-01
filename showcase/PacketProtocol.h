@@ -13,7 +13,7 @@ namespace Showcase {
         void incr_offset(int offset);
         void update_offset(int buffer_offset);
         char* get_buffer(int index);
-        size_t reset_buffer(int capacity);
+        size_t reset_buffer();
 
     private:
         int max_frame_size;

@@ -2,7 +2,7 @@
 
 namespace Showcase {
     SessionHandler::SessionHandler(boost::asio::io_service &io_service)
-            : socket_(io_service), packet_protocol_(4, 1024 * 1024) {
+            : socket_(io_service), packet_protocol_(9, 1024 * 1024) {
     }
 
     tcp::socket &SessionHandler::socket() {
@@ -42,7 +42,6 @@ namespace Showcase {
                 if (mark == 1) {
                     int header_length = this->packet_protocol_.get_header_length();
                     int body_length = this->packet_protocol_.get_body_length();
-                    this->packet_protocol_.reset_buffer(body_length);
 
                     socket_.async_read_some(
                             boost::asio::buffer(this->packet_protocol_.get_buffer(header_length),
@@ -54,7 +53,10 @@ namespace Showcase {
                                         body_length,
                                         2));
                 } else {
-                    printf("abc");
+                    this->on_message(this->packet_protocol_.get_buffer(0),
+                            this->packet_protocol_.get_header_length() + this->packet_protocol_.get_body_length());
+
+                    this->start();
                 }
             }
 
@@ -83,5 +85,13 @@ namespace Showcase {
     void SessionHandler::close() {
         boost::asio::ip::tcp::endpoint remote_addr = socket_.remote_endpoint();
         delete this;
+    }
+
+     void SessionHandler::on_message(const char* buffer, size_t length) {
+         std::cout << "receive message" << std::endl;
+         for(size_t i =0 ; i< length; i++) {
+             std::cout << buffer[i];
+         }
+         std::cout << std::endl;
     }
 }

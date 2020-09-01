@@ -10,7 +10,7 @@
 int main(int argc, char *argv[]) {
     LOGFMT_INFO(LOG4Z_MAIN_LOGGER_ID, "Start server ...");
 
-    int server_port = 7654;
+    int server_port = 36366;
     int connet_num = 100;
 
 
