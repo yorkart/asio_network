@@ -7,22 +7,20 @@
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
 #include "SessionHandler.h"
+#include "AsyncAcceptor.h"
 
 using boost::asio::ip::tcp;
 
 namespace Showcase {
     class NetworkServer {
     public:
-        NetworkServer(boost::asio::io_service &io_service, short port);
+        NetworkServer(short port);
+
+        void run();
 
     private:
-        void start_accept();
-
-        void handle_accept(Showcase::SessionHandler *new_session,
-                           const boost::system::error_code &error);
-
-        boost::asio::io_service &io_service_;
-        tcp::acceptor acceptor_;
+        boost::asio::io_service io_service_;
+        AsyncAcceptor async_acceptor_;
     };
 }
 

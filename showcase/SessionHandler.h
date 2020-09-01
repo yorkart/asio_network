@@ -5,6 +5,7 @@
 #include <iostream>
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
+#include "PacketProtocol.h"
 
 using boost::asio::ip::tcp;
 
@@ -17,9 +18,13 @@ namespace Showcase {
 
         void start();
 
+        void close();
+
     private:
         void handle_read(const boost::system::error_code &error,
-                         size_t bytes_transferred);
+                         size_t bytes_transferred,
+                         size_t want_bytes,
+                         size_t mark);
 
         void handle_write(const boost::system::error_code &error);
 
@@ -28,6 +33,8 @@ namespace Showcase {
             max_length = 1024
         };
         char data_[max_length];
+
+        PacketProtocol packet_protocol_;
     };
 }
 

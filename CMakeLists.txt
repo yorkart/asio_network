@@ -39,6 +39,6 @@ add_executable(asio_network main.cpp
         protocol/packet_protocol.cpp
         protocol/packet_protocol.h
         protocol/protocol_network.h
-        showcase/SessionHandler.cpp showcase/SessionHandler.h showcase/NetworkServer.cpp showcase/NetworkServer.h showcase/async_main.cpp)
+        showcase/SessionHandler.cpp showcase/SessionHandler.h showcase/NetworkServer.cpp showcase/NetworkServer.h showcase/async_main.cpp showcase/AsyncAcceptor.cpp showcase/AsyncAcceptor.h showcase/PacketProtocol.cpp showcase/PacketProtocol.h)
 
 target_link_libraries( asio_network ${Boost_LIBRARIES} )
